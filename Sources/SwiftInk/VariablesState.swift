@@ -325,7 +325,9 @@ public class VariablesState: Sequence {
             oldValue = valueFromGlobals
         }
         
-        ListValue.retainListOriginsForAssignment(old: oldValue!, new: value)
+        if let oldValue = oldValue {
+            ListValue.retainListOriginsForAssignment(old: oldValue, new: value)
+        }
         
         if patch != nil {
             patch!.setGlobal(named: variableName, to: value)
