@@ -1071,7 +1071,7 @@ public class StoryState {
         }
         
         // Trim whitespace from END of function call
-        for i in (functionStartPoint ... outputStream.count - 1).reversed() {
+        for i in stride(from: outputStream.count - 1, through: functionStartPoint, by: -1) {
             let obj = outputStream[i]
             let txt = obj as? StringValue
             let cmd = obj as? ControlCommand
